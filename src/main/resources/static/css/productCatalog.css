@@ -1,0 +1,121 @@
+/*
+ * =========================================
+ * ESTILOS DE VISTA Y GRID (3x3 y 4x4)
+ * =========================================
+ */
+
+/* Estilo exclusivo para la vista de 3 columnas por fila */
+#productCatalog .view-3x3 .col-12 {
+    width: 33.33%;  /* 3 columnas por fila */
+}
+
+/* Estilo exclusivo para la vista de 4 columnas por fila */
+#productCatalog .view-4x4 .col-12 {
+    width: 25%;  /* 4 columnas por fila */
+}
+
+
+/*
+ * =========================================
+ * ESTILOS DE LA TARJETA (CARD)
+ * =========================================
+ */
+
+/* Ajustes base para las cards (productos) - Tu estilo original */
+#productCatalog .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Necesario para que el efecto de imagen no se desborde */
+}
+
+/* Efecto hover en la tarjeta - Tu estilo original */
+#productCatalog .card:hover {
+    transform: scale(1.05);  /* Agranda la tarjeta al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Sombra más intensa */
+}
+
+/* Contenedor de la imagen: Necesario para posicionar el botón "ojito" */
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Imagen dentro de la tarjeta */
+#productCatalog .card-img-top {
+    width: 100%;
+    height: 180px;  /* Altura de las imágenes que definiste */
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+    transition: filter 0.3s ease; /* Para el efecto de oscurecimiento en hover */
+}
+
+
+/*
+ * =========================================
+ * ESTILOS DE CONTENIDO DE LA TARJETA
+ * =========================================
+ */
+
+/* Título de cada producto - Tu estilo original */
+#productCatalog .card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0 5px 0; /* Ajuste pequeño para dejar espacio al precio */
+}
+
+/* Descripción de los productos - Tu estilo original */
+#productCatalog .card-text {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* NUEVO: Estilo para el precio */
+.product-price {
+    font-size: 1.25rem; /* Ajustado para que resalte */
+    font-weight: bold;
+    color: var(--bs-primary, #0d6efd) !important; /* Asegura que se vea el color primario */
+    margin-top: 10px;
+}
+
+
+/*
+ * =========================================
+ * ESTILOS DEL BOTÓN "OJITO" (Ver Detalle)
+ * =========================================
+ */
+
+/* Botón de ver detalle (el "ojito"): Posicionado y oculto */
+.product-view-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* CENTRADO PERFECTO */
+    opacity: 0; /* INVISIBLE POR DEFECTO */
+    transition: opacity 0.3s ease;
+    z-index: 10; /* Asegura que esté por encima de la imagen */
+    
+    /* Estilos estéticos */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Efecto Hover: Mostrar el botón y oscurecer la imagen */
+#productCatalog .card:hover .product-view-button {
+    opacity: 1; /* Hace visible el botón al hacer hover en la tarjeta */
+}
+
+#productCatalog .card:hover .product-image-wrapper .card-img-top {
+    filter: brightness(0.7); /* Oscurece la imagen un poco para que el botón resalte */
+}
+

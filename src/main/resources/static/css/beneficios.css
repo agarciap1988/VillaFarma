@@ -1,0 +1,35 @@
+.hero-features {
+    display: flex;
+    gap: 20px; /* espacio entre items */
+    margin: 20px 0;
+    flex-wrap: wrap; /* para que en móviles se acomoden */
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: #198754; /* verde tipo Bootstrap */
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 30px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+}
+
+.feature-item i {
+    font-size: 18px;
+    color: #198754;
+}
+
+/* efecto hover opcional */
+.feature-item:hover {
+    background: #198754;
+    color: #fff;
+}
+
+.feature-item:hover i {
+    color: #fff;
+}

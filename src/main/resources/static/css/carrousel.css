@@ -1,0 +1,124 @@
+/* Carrusel */
+.carousel-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.carousel-item {
+    flex: 0 0 auto; /* Asegura que las imágenes no se estiren */
+    margin: 0 10px; /* Espacio entre los elementos del carrusel */
+}
+
+.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 200px; /* Ajusta el tamaño según el diseño */
+    border-radius: 10px;
+}
+
+/* Estilo para las cards */
+.card {
+    border: 2px solid #ccc; /* Añade un borde de 2px, puedes cambiar el color */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para un efecto de profundidad */
+    transition: transform 0.3s ease; /* Efecto al hacer hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+}
+
+/* Títulos de las categorías */
+.card-body .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Color del texto */
+    margin-top: 10px;
+}
+
+/* Controles del carrusel */
+.carousel-control-prev, .carousel-control-next {
+    background-color: rgb(7, 217, 13); /* Verde claro en RGB */
+    border-radius: 50%; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar de color */
+    width: 40px; /* Tamaño del botón */
+    height: 40px; /* Tamaño del botón */
+    font-size: 20px; /* Tamaño del ícono */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta el desplazamiento para el 50% */
+}
+
+/* Cambio de color al pasar el mouse (hover) */
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: rgb(144, 238, 144); /* Verde claro más suave al pasar el mouse */
+}
+
+/* Botón anterior (izquierda) */
+.carousel-control-prev {
+    left: 10px; /* Alinea el botón a la izquierda */
+}
+
+/* Botón siguiente (derecha) */
+.carousel-control-next {
+    right: 10px; /* Alinea el botón a la derecha */
+}
+
+/* Íconos dentro de los botones */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 16px; /* Tamaño del ícono */
+    height: 16px; /* Tamaño del ícono */
+    filter: invert(1); /* Cambia el color del ícono a blanco */
+}
+
+/* Efecto hover para los botones */
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: rgb(144, 238, 144); /* Fondo verde claro cuando se pasa el mouse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .carousel-inner {
+        flex-direction: column; /* Alinea los elementos verticalmente en pantallas pequeñas */
+    }
+
+    .carousel-item img {
+        height: 150px; /* Ajusta la altura de las imágenes en pantallas más pequeñas */
+    }
+}
+
+/* Título principal */
+#categorias-producto h2 {
+    font-size: 32px; /* Tamaño del título */
+    font-weight: bold; /* Hacerlo en negrita */
+    color: #007bff; /* Color azul (puedes cambiarlo si quieres otro tono) */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Subtítulo */
+#categorias-producto p {
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+    color: #555; /* Color gris suave */
+    margin-bottom: 30px; /* Espacio debajo del texto */
+}
+
+/* Estilo para el carrusel */
+.carousel-inner .carousel-item {
+    padding: 20px 0; /* Espaciado superior e inferior */
+}
+
+/* Estilo de la descripción con tamaño aún más pequeño */
+.card-body .card-description {
+    font-size: 8px; /* Tamaño de fuente más pequeño */
+    color: #555; /* Color gris claro */
+    margin-top: 3px; /* Espacio reducido entre el título y la descripción */
+    margin-bottom: 3px; /* Espacio reducido entre la descripción y los productos */
+    line-height: 1; /* Ajusta la altura de línea para hacer el texto aún más compacto */
+    white-space: normal; /* Permite que el texto se divida en varias líneas */
+    overflow-wrap: break-word; /* Asegura que las palabras largas se ajusten bien */
+}

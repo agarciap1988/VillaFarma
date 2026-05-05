@@ -1,0 +1,163 @@
+/* Importar fuente profesional */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* ----------- General ----------- */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  scroll-behavior: smooth;
+  padding-top: 70px; /* evita que la navbar tape el contenido */
+}
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  color: #111827;
+}
+p {
+  color: #374151;
+}
+
+/* ----------- Navbar ----------- */
+.navbar-brand {
+  font-weight: 700;
+  color: #2563eb !important;
+}
+.navbar .nav-link {
+  color: #333 !important;
+  font-weight: 500;
+}
+.navbar .nav-link:hover {
+  color: #2563eb !important;
+}
+.navbar .btn-primary {
+  background-color: #2563eb;
+  border: none;
+}
+.navbar .btn-primary:hover {
+  background-color: #1e40af;
+}
+
+/* ----------- Hero Section ----------- */
+.hero-section {
+  background: linear-gradient(to right, #f9fafb, #e0f2fe);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.hero-title {
+  font-size: 2.8rem;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+.hero-buttons .btn-lg {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+/* ----------- Servicios ----------- */
+.services-section .service-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.services-section .service-card:hover {
+  transform: translateY(-5px);
+}
+.services-section .service-icon {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* ----------- Productos ----------- */
+.categories-section .category-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.categories-section .category-card:hover {
+  transform: translateY(-5px);
+}
+.categories-section h5 {
+  margin-top: 10px;
+}
+
+/* ----------- Testimonios ----------- */
+.testimonial-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.testimonial-card .stars {
+  color: #facc15; /* amarillo */
+  margin-bottom: 10px;
+}
+
+/* ----------- Contacto ----------- */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.contact-item i {
+  font-size: 1.5rem;
+  color: #2563eb;
+  margin-right: 10px;
+}
+
+/* ----------- Footer ----------- */
+.footer-section {
+  background: #111827;
+  color: #f9fafb;
+  padding: 20px 0;
+}
+.footer-section .social-links a {
+  color: #f9fafb;
+  margin-left: 10px;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+.footer-section .social-links a:hover {
+  color: #2563eb;
+}
+.card-img-container {
+    height: 200px; /* Puedes ajustar esta altura */
+    overflow: hidden;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Esta propiedad es clave. 'contain' ajusta la imagen para que quepa dentro del contenedor sin recortarla, manteniendo sus proporciones. */
+}
+
+/* Contenedor para las imágenes del carrusel */
+.carousel-img-container {
+    height: 400px; /* Ajusta esta altura a lo que mejor se vea en tu diseño */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga */
+    display: flex; /* Ayuda a centrar la imagen si es necesario */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Reglas para las imágenes dentro del carrusel */
+.carousel-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen para que quepa dentro del contenedor sin recortarla. */
+    /* Si quieres que la imagen siempre llene el contenedor (recortando los bordes si es necesario), usa 'cover' en lugar de 'contain'. */
+}
+
+/* Opcional: Ajustar el carrusel para que no tenga una altura excesiva */
+.carousel {
+    max-height: 400px; /* Misma altura que el contenedor de la imagen */
+    overflow: hidden;
+}

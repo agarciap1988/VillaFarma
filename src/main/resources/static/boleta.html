@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Boleta de Compra - Villa Farma</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body class="bg-light">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><i class="fas fa-pills me-2"></i>Villa Farma</a>
+            </div>
+        </nav>
+
+        <!-- Boleta -->
+        <div class="container my-5">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Boleta de Compra</h2>
+                    <p><strong>Número de Boleta:</strong> <span id="numeroBoleta"></span></p>
+                    <p><strong>Cliente:</strong> <span id="cliente"></span></p>
+                    <p><strong>Fecha:</strong> <span id="fecha"></span></p>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detalleBoleta"></tbody>
+                        </table>
+                    </div>
+                    <div class="mb-3">
+                        <p><strong>Método de Entrega:</strong> <span id="entrega"></span></p>
+                        <p class="d-none" id="direccionBox"><strong>Dirección:</strong> <span id="direccionEntrega"></span></p>
+                        <p class="d-none" id="distritoBox"><strong>Distrito:</strong> <span id="distritoEntrega"></span></p>
+                    </div>
+                    <div class="text-end">
+                        <p><strong>Recargo Delivery:</strong> S/ <span id="recargoDelivery">0.00</span></p>
+                        <h4>Total Final: <span id="totalFinal">S/ 0.00</span></h4>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success me-2" onclick="window.print()">
+                            <i class="fas fa-print me-2"></i>Imprimir PDF
+                        </button>
+                        <button class="btn btn-primary me-2" onclick="seguirComprando()">
+                            <i class="fas fa-shopping-cart me-2"></i>Seguir Comprando
+                        </button>
+                        <button class="btn btn-secondary" onclick="volverInicio()">
+                            <i class="fas fa-home me-2"></i>Volver al Inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+                if (!orderDetails) {
+                    // Si no hay detalles de la compra, redirigir a la página principal
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                // Mostrar los detalles de la compra en la página
+                document.getElementById('numeroBoleta').textContent = orderDetails.orderId;
+                document.getElementById('cliente').textContent = orderDetails.clientName;
+                document.getElementById('fecha').textContent = orderDetails.date;
+                document.getElementById('entrega').textContent = orderDetails.deliveryMethod === 'delivery' ? 'Delivery' : 'Recojo en Farmacia';
+
+                // Si es delivery, mostrar la dirección y distrito
+                if (orderDetails.deliveryMethod === 'delivery') {
+                    document.getElementById('direccionBox').classList.remove('d-none');
+                    document.getElementById('distritoBox').classList.remove('d-none');
+                    document.getElementById('direccionEntrega').textContent = orderDetails.deliveryAddress;
+                    document.getElementById('distritoEntrega').textContent = orderDetails.deliveryDistrict;
+                }
+
+                // Mostrar los detalles de los productos
+                const detalleBoleta = document.getElementById('detalleBoleta');
+                orderDetails.items.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                      <td>${item.name}</td>
+                      <td>${item.quantity}</td>
+                      <td>S/ ${item.price.toFixed(2)}</td>
+                      <td>S/ ${(item.price * item.quantity).toFixed(2)}</td>
+                  `;
+                    detalleBoleta.appendChild(row);
+                });
+
+                // Mostrar los totales
+                document.getElementById('recargoDelivery').textContent = orderDetails.deliveryCharge.toFixed(2);
+                document.getElementById('totalFinal').textContent = orderDetails.total.toFixed(2);
+            });
+
+            // Funciones para los botones de acción
+            function seguirComprando() {
+                window.location.href = 'index.html'; // Redirige al catálogo de productos
+            }
+
+            function volverInicio() {
+                window.location.href = 'index.html'; // Redirige al inicio
+            }
+        </script>
+
+        <script src="js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
