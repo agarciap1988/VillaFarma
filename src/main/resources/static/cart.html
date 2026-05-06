@@ -132,6 +132,24 @@
                                     <h3 class="text-danger fw-bold">Total: <span id="orderTotal">S/ 0.00</span></h3>
                                 </div>
                             </div>
+                            
+                            <hr class="my-4">
+
+                            <h5 class="fw-bold">Método de Pago</h5>
+
+                            <div class="mb-3">
+                                <select id="metodoPago" class="form-select">
+                                    <option value="">Seleccione un método de pago</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="yape">Yape</option>
+                                    <option value="plin">Plin</option>
+                                </select>
+                            </div>
+
+                            <div id="qrContainer" class="text-center mt-3" style="display:none;">
+                                <h6>Escanea el QR</h6>
+                                 <div id="qrBox" class="border p-3 rounded bg-light"></div>
+                            </div>
 
                             <div class="d-grid gap-2 d-md-block mt-4">
                                 <button class="btn btn-success btn-lg" id="checkoutButton" data-bs-toggle="modal" data-bs-target="#orderSummaryModal"><i class="fas fa-check-circle me-2"></i> Finalizar Compra</button>

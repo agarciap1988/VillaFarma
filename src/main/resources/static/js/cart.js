@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const deliveryMethodSelect = document.getElementById('deliveryMethod');
     const cartMessageDiv = document.getElementById('cartMessage');
     const checkoutButton = document.querySelector('.btn-success.btn-lg'); // Botón "Finalizar Compra"
-
+    const metodoPagoSelect = document.getElementById("metodoPago");
+    const qrContainer = document.getElementById("qrContainer");
+    const qrBox = document.getElementById("qrBox");
     // Campos específicos de Delivery
     const deliveryAddressInput = document.getElementById('deliveryAddress');
     const deliveryDistrictSelect = document.getElementById('deliveryDistrict');
@@ -186,12 +188,45 @@ document.addEventListener("DOMContentLoaded", function () {
             updateTotals(getCart());
         });
     }
+    
+    // Evento método de pago (QR)
+    if (metodoPagoSelect) {
+        metodoPagoSelect.addEventListener("change", () => {
+            const metodo = metodoPagoSelect.value;
+
+            if (metodo === "yape") {
+                qrContainer.style.display = "block";
+                qrBox.innerHTML = `
+                <h5 class="text-success">YAPE</h5>
+                <p>Se pagó con Yape</p>
+            `;
+            } else if (metodo === "plin") {
+                qrContainer.style.display = "block";
+                qrBox.innerHTML = `
+                <h5 class="text-primary">PLIN</h5>
+                <p>Se pagó con Plin</p>
+            `;
+            } else {
+                qrContainer.style.display = "none";
+            }
+        });
+    }
 
     if (checkoutButton) {
         checkoutButton.addEventListener('click', function (e) {
             e.preventDefault();
 
             const cart = getCart();
+            const metodoPago = metodoPagoSelect?.value;
+
+            if (!metodoPago) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Seleccione método de pago',
+                    text: 'Debe elegir cómo desea pagar'
+                });
+                return;
+            }
             const deliveryMethod = deliveryMethodSelect?.value || 'Recojo en tienda';
 
             // 1. Validar Carrito Vacío
