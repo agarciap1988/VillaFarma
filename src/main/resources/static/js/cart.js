@@ -191,26 +191,34 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Evento método de pago (QR)
     if (metodoPagoSelect) {
-        metodoPagoSelect.addEventListener("change", () => {
-            const metodo = metodoPagoSelect.value;
+    metodoPagoSelect.addEventListener("change", () => {
+        const metodo = metodoPagoSelect.value;
 
-            if (metodo === "yape") {
-                qrContainer.style.display = "block";
-                qrBox.innerHTML = `
-                <h5 class="text-success">YAPE</h5>
-                <p>Se pagó con Yape</p>
-            `;
-            } else if (metodo === "plin") {
-                qrContainer.style.display = "block";
-                qrBox.innerHTML = `
-                <h5 class="text-primary">PLIN</h5>
-                <p>Se pagó con Plin</p>
-            `;
-            } else {
-                qrContainer.style.display = "none";
-            }
-        });
-    }
+        qrBox.innerHTML = ""; // limpiar QR anterior
+
+        if (metodo === "yape") {
+            qrContainer.style.display = "block";
+
+            new QRCode(qrBox, {
+                text: "Pago Yape - VillaFarma",
+                width: 150,
+                height: 150
+            });
+        }
+        else if (metodo === "plin") {
+            qrContainer.style.display = "block";
+
+            new QRCode(qrBox, {
+                text: "Pago Plin - VillaFarma",
+                width: 150,
+                height: 150
+            });
+        }
+        else {
+            qrContainer.style.display = "none";
+        }
+    });
+}
 
     if (checkoutButton) {
         checkoutButton.addEventListener('click', function (e) {
