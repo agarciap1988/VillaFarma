@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
             qrContainer.style.display = "block";
 
             new QRCode(qrBox, {
-                text: "Pago Yape - VillaFarma",
+                text: "Pago Yape - VillaFarma.",
                 width: 150,
                 height: 150
             });
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
             qrContainer.style.display = "block";
 
             new QRCode(qrBox, {
-                text: "Pago Plin - VillaFarma",
+                text: "Pago Plin - VillaFarma.",
                 width: 150,
                 height: 150
             });
